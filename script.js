@@ -9,28 +9,36 @@ const buyMultiplierButton = document.getElementById("buyMultiplier");
 const autoClickerCountElement = document.getElementById("autoClickerCount");
 const multiplierCountElement = document.getElementById("multiplierCount");
 
-// Debugging: Detect if on mobile
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-console.log("Mobile User:", isMobile);
-
-// Show a debug log on the page for mobile users
-if (isMobile) {
-    const debugLog = document.createElement("p");
-    debugLog.id = "debugLog";
-    debugLog.style.color = "red";
-    document.body.appendChild(debugLog);
+// Function to save game data
+function saveGame() {
+    localStorage.setItem("counter", counter);
+    localStorage.setItem("autoClickers", autoClickers);
+    localStorage.setItem("multiplier", multiplier);
 }
 
-// Function to update the counter and log clicks
+// Function to load game data
+function loadGame() {
+    const savedCounter = localStorage.getItem("counter");
+    const savedAutoClickers = localStorage.getItem("autoClickers");
+    const savedMultiplier = localStorage.getItem("multiplier");
+
+    if (savedCounter !== null) counter = parseInt(savedCounter);
+    if (savedAutoClickers !== null) autoClickers = parseInt(savedAutoClickers);
+    if (savedMultiplier !== null) multiplier = parseInt(savedMultiplier);
+
+    counterElement.textContent = counter;
+    autoClickerCountElement.textContent = `Auto Clickers: ${autoClickers}`;
+    multiplierCountElement.textContent = `Multiplier: x${multiplier}`;
+}
+
+// Load game on start
+loadGame();
+
+// Function to update the counter
 function updateCounter() {
     counter += multiplier;
     counterElement.textContent = counter;
-
-    // Debugging: Log clicks
-    console.log("Button Clicked! Counter:", counter);
-    if (isMobile) {
-        document.getElementById("debugLog").textContent = `Counter: ${counter}`;
-    }
+    saveGame(); // Save progress after each click
 }
 
 // Attach event listener with fallback for mobile touch events
@@ -44,6 +52,7 @@ buyAutoClickerButton.addEventListener("click", function () {
         autoClickers++;
         autoClickerCountElement.textContent = `Auto Clickers: ${autoClickers}`;
         counterElement.textContent = counter;
+        saveGame(); // Save after purchase
     }
 });
 
@@ -54,6 +63,7 @@ buyMultiplierButton.addEventListener("click", function () {
         multiplier++;
         multiplierCountElement.textContent = `Multiplier: x${multiplier}`;
         counterElement.textContent = counter;
+        saveGame(); // Save after purchase
     }
 });
 
@@ -62,5 +72,6 @@ setInterval(function () {
     if (autoClickers > 0) {
         counter += autoClickers;
         counterElement.textContent = counter;
+        saveGame(); // Save after auto clicks
     }
 }, 1000);
