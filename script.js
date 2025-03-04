@@ -1,6 +1,6 @@
-let score = 0;
+let counter = 0;
 
-document.getElementById("clicker").addEventListener("click", function() {
-    score++;
-    document.getElementById("score").textContent = score;
+document.getElementById("clickButton").addEventListener("click", function() {
+    counter++;
+    document.getElementById("counter").textContent = counter;
 });
