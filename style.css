@@ -34,3 +34,31 @@ h2 {
     display: block;
     margin: 10px auto;
 }
+#achievements {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border: 2px solid black;
+    z-index: 1000;
+}
+
+#achievements ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#achievements li {
+    padding: 5px 0;
+}
+
+#achievements button {
+    display: block;
+    margin: 10px auto;
+}
+
+.hidden {
+    display: none;
+}
