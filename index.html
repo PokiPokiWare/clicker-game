@@ -7,31 +7,39 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Clicker Game</h1>
-    <p>Clicks: <span id="counter">0</span></p>
-    <button id="clickButton">Click Me!</button>
 
-    <h2>Shop</h2>
-    <p>Buy upgrades with your clicks!</p>
-    <button id="buyAutoClicker">Auto Clicker (Cost: 10)</button>
-    <p id="autoClickerCount">Auto Clickers: 0</p>
+    <!-- Main Game -->
+    <div id="game">
+        <h1>Clicker Game</h1>
 
-    <button id="buyMultiplier">Multiplier (Cost: 50)</button>
-<p id="multiplierCount">Multiplier: x1</p>
-<p style="color: green;">Your progress is saved automatically!</p>
-<button id="optionsButton">Options</button>
-<div id="optionsMenu" class="hidden">
-    <h2>Options</h2>
-    <button id="resetGame">Reset Game</button>
-    <button id="closeOptions">Close</button>
-</div>
- <!-- Achievements Section -->
-<div id="achievements" class="hidden">
-    <h2>Achievements</h2>
-    <ul id="achievementList"></ul>
-    <button id="closeAchievements">Close</button>
-</div>
-   
+        <div id="counterSection">
+            <p>Counter: <span id="counter">0</span></p>
+            <button id="clickButton">Click</button>
+        </div>
+
+        <div id="shopSection">
+            <h2>Shop</h2>
+            <button id="buyAutoClicker">Buy Auto Clicker (10 points)</button>
+            <button id="buyMultiplier">Buy Multiplier (50 points)</button>
+            <p id="autoClickerCount">Auto Clickers: 0</p>
+            <p id="multiplierCount">Multiplier: x1</p>
+        </div>
+
+        <div id="optionsSection">
+            <button id="achievementsButton">Achievements</button>
+            <button id="resetButton">Reset Game</button>
+        </div>
+
+        <p id="note">Note: This game doesn't save automatically, so you might start over when you come back.</p>
+    </div>
+
+    <!-- Achievements Modal -->
+    <div id="achievements" class="hidden">
+        <h2>Achievements</h2>
+        <ul id="achievementList"></ul>
+        <button id="closeAchievements">Close</button>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
