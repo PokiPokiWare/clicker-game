@@ -8,6 +8,32 @@ const buyAutoClickerButton = document.getElementById("buyAutoClicker");
 const buyMultiplierButton = document.getElementById("buyMultiplier");
 const autoClickerCountElement = document.getElementById("autoClickerCount");
 const multiplierCountElement = document.getElementById("multiplierCount");
+const optionsButton = document.getElementById("optionsButton");
+const optionsMenu = document.getElementById("optionsMenu");
+const closeOptionsButton = document.getElementById("closeOptions");
+const resetGameButton = document.getElementById("resetGame");
+
+// Open options menu
+optionsButton.addEventListener("click", () => {
+    optionsMenu.classList.remove("hidden");
+});
+
+// Close options menu
+closeOptionsButton.addEventListener("click", () => {
+    optionsMenu.classList.add("hidden");
+});
+
+// Reset game data
+resetGameButton.addEventListener("click", () => {
+    localStorage.clear();
+    counter = 0;
+    autoClickers = 0;
+    multiplier = 1;
+    counterElement.textContent = counter;
+    autoClickerCountElement.textContent = `Auto Clickers: ${autoClickers}`;
+    multiplierCountElement.textContent = `Multiplier: x${multiplier}`;
+    optionsMenu.classList.add("hidden"); // Close menu after reset
+});
 
 // Function to save game data
 function saveGame() {
